@@ -4,6 +4,7 @@ import {dummyDataService} from './mail.dummydata.service.js';
 
 export const mailService = {
   query,
+  ToggleStar,
 };
 
 const STORAGE_KEY = 'emailDB';
@@ -15,6 +16,13 @@ function query(criteria = null) {
     const inboxEmails = emails.filter(email => email.status === 'inbox');
     return Promise.resolve(inboxEmails);
   }
+}
+
+function ToggleStar(id) {
+  const mailIdx = gEmails.findIndex(mail => mail.id === id);
+  gEmails[mailIdx].isStarred = !gEmails[mailIdx].isStarred;
+  _saveEmailsToStorage(gEmails);
+  return Promise.resolve();
 }
 
 function _getEmails() {

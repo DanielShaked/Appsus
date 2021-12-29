@@ -1,14 +1,12 @@
 /* Basics */
 @import './parts/base.css';
 
-
 /* Helpers */
 @import './parts/helpers.css';
-
 
 /* Layout */
 @import './parts/layout.css';
 
-
 /* Cmps */
 @import './cmps/header.css';
+@import '../css/cmps/mail/mail-preview.css';

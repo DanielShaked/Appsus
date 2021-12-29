@@ -1,0 +1,12 @@
+.mail-preview-star {
+  color: rgb(188, 188, 188);
+}
+
+.mail-preview-star:hover {
+  color: #f2c16b;
+  cursor: pointer;
+}
+
+.mail-preview-star.active-star {
+  color: #f2c16b;
+}
