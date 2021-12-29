@@ -2,7 +2,6 @@
 import {NoteEditor} from "./NoteEditor.jsx";
 
 export function NotePreview({ note, removeNote, onChangeBgColor }) {
-    console.log('notes-props from NotePreview:', note);
 
     function onRemoveNote() {
         removeNote(note.id);

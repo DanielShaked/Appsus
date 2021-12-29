@@ -18,7 +18,6 @@ const STORAGE_KEY = 'notesDB';
 
 function query() {
     const notes = _loadNotesFromStorage()
-    console.log('notes from service:', notes);
 
     // if (!filterBy) return Promise.resolve(cars)
     // const filteredCars = _getFilteredCars(cars, filterBy)
@@ -31,7 +30,6 @@ createNotes()
 
 
 function removeNote(noteId) {
-    console.log('noteId:', noteId);
     let notes = _loadNotesFromStorage();
     notes = notes.filter(note => note.id !== noteId);
     _saveNotesToStorage(notes);
@@ -115,7 +113,6 @@ function createNotes() {
         ];
 
     }
-    console.log('test');
     _saveNotesToStorage(notes)
 }
 

@@ -12,7 +12,6 @@ export class SearchNote extends React.Component{
     }
     render() {
         const { value } = this.state;
-        console.log('value:', value);
         
         return (
             <div className="search-container">
