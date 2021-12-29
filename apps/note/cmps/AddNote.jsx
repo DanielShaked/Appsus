@@ -33,19 +33,24 @@ export class AddNote extends React.Component {
     }
     
     render() {
+        const buttonsIcons = [<i className="fab fa-youtube"></i>, <i className="far fa-images"></i>, <i className="far fa-list-alt"></i>]
+        const buttons = buttonsIcons.map(icon => <button className="button-type" key={icon} >{icon}</button> )
         const { value } = this.state;
         console.log('value from addNote:', value);
         
         return (
             <section className="add-note">
                 <div className="add-input">
-                    <i onClick={this.onAddNote} className="far fa-plus-square"></i>
+                    {/* <i onClick={this.onAddNote} className="far fa-plus-square"></i> */}
                     <input
                         type="text"
                         name="value"
                         value={value}
                         placeholder="Enter new note"
-                        onChange={this.handleChange}/>
+                        onChange={this.handleChange}
+                        onBlur={this.onAddNote}/>
+                    {buttons}
+                    
                 </div>
             </section>
         )

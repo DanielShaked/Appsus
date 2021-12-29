@@ -1,5 +1,33 @@
-.note-editor {}
+.note-editor {
+    opacity: 0;
+    transition: 0.25s ease-in;
+    transition: 0.7s ease-out;
+}
 
 .note-editor>* {
-    margin-left: 10px;
+    /* opacity: 0; */
+    margin-left: 1.5rem;
+    font-size: 1.3rem;
+}
+
+
+.note-editor {
+    padding-top: 10px;
+    position: absolute;
+    bottom: 5%;
+    right: 5%;
+
+}
+
+.note-editor>* {
+    cursor: pointer;
+}
+
+.note-editor:hover {
+    opacity: 1;
+    color: darkgrey;
+
+    margin-left: 1.5rem;
+    font-size: 1.3rem;
+
 }

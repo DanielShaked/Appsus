@@ -12,7 +12,10 @@ export function NotePreview({ note, removeNote, onChangeBgColor }) {
     return (
         <section style={{ backgroundColor }} className="note-preview">
             <div></div>
-            note : {note.info.txt}
+            <i className="fas fa-thumbtack"></i>
+            <div className="note-content">
+            {note.info.txt}
+            </div>
             
             <NoteEditor
                 onRemoveNote={onRemoveNote}

@@ -9,18 +9,37 @@
 
 }
 
+.note-preview .note-content {
+    text-align: center;
+    font-size: 1.5rem;
+}
 
+/* 
 .note-editor {
     position: absolute;
     bottom: 5%;
     right: 5%;
-
+    
 }
 
 .note-editor>* {
     cursor: pointer;
-}
+} */
 
 
 /* Icons */
-.note-preview .far.fa-trash-alt {}
+.note-preview .fas.fa-thumbtack {
+    position: absolute;
+    color: darkgrey;
+    opacity: 0.5;
+    left: 5%;
+    top: 5%;
+    font-size: 25px;
+    cursor: pointer;
+    transition: opacity 0.218s ease-in
+}
+
+.note-preview .fas.fa-thumbtack:hover {
+    opacity: 1;
+    transform: scale(1.3);
+}

@@ -11,10 +11,11 @@
 @import './cmps/header.css';
 
 /* Cmps-Keep */
+@import '../css/cmps/mail/mail-preview.css';
+@import '../css/cmps/mail/mail-list.css';
+
 
 @import '../css/cmps/keep/note-preview.css';
 @import '../css/cmps/keep/color-picker.css';
 @import '../css/cmps/keep/add-note.css';
 @import '../css/cmps/keep/note-editor.css';
-@import '../css/cmps/mail/mail-preview.css';
-@import '../css/cmps/mail/mail-list.css';
