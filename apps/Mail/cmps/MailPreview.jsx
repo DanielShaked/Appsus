@@ -7,13 +7,19 @@ export class MailPreview extends React.Component {
     isStarred: this.props.mail.isStarred,
   };
 
-  onToggleStar = ev => {
-    ev.preventDefault();
+  onToggleStar = () => {
     mailService.ToggleStar(this.props.mail.id).then(() => {
       console.log('Toggle success in localStorage object');
+      // TODO: to check if need to reload all emails
       this.props.loadMails();
     });
     this.setState({isStarred: !this.state.isStarred});
+  };
+
+  onDeleteMail = () => {
+    mailService.deleteMailById(this.props.mail.id).then(() => {
+      this.props.loadMails();
+    });
   };
 
   render() {

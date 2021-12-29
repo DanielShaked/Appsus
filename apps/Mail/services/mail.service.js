@@ -5,6 +5,7 @@ import {dummyDataService} from './mail.dummydata.service.js';
 export const mailService = {
   query,
   ToggleStar,
+  deleteMailById,
 };
 
 const STORAGE_KEY = 'emailDB';
@@ -16,6 +17,20 @@ function query(criteria = null) {
     const inboxEmails = emails.filter(email => email.status === 'inbox');
     return Promise.resolve(inboxEmails);
   }
+}
+
+function deleteMailById(id) {
+  const mailIdx = gEmails.findIndex(email => email.id === id);
+  // delete from trash
+  if (gEmails[mailIdx].status === 'trash') gEmails.splice(mailIdx, 1);
+  else {
+    // check if email is starred first
+    if (gEmails[mailIdx].isStarred) gEmails[mailIdx].isStarred = false;
+    // move email to trash
+    gEmails[mailIdx].status = 'trash';
+  }
+  _saveEmailsToStorage(gEmails);
+  return Promise.resolve();
 }
 
 function ToggleStar(id) {
