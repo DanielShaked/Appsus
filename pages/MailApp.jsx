@@ -32,6 +32,7 @@ export class MailApp extends React.Component {
     return (
       <section className="mail-app">
         {/* TODO: send onSetFilter */}
+        {/* <MailSideNav /> */}
         <MailFilter criteria={this.state.criteria} />
         <MailList mails={mails} loadMails={this.loadMails} />
       </section>
