@@ -3,7 +3,12 @@
 
 
 /* Helpers */
-@import './parts/helpers.css'
+@import './parts/helpers.css';
+
+
+/* Layout */
+@import './parts/layout.css';
 
 
 /* Cmps */
+@import './cmps/header.css';
