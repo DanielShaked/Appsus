@@ -1,0 +1,26 @@
+.note-preview {
+    background-color: #fff475;
+    position: relative;
+    max-width: 350px;
+    height: 200px;
+    border-radius: 25px;
+    padding: 15px;
+    margin: 20px;
+
+}
+
+
+.note-editor {
+    position: absolute;
+    bottom: 5%;
+    right: 5%;
+
+}
+
+.note-editor>* {
+    cursor: pointer;
+}
+
+
+/* Icons */
+.note-preview .far.fa-trash-alt {}

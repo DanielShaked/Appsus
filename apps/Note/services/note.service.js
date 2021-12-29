@@ -1,14 +1,18 @@
 import { utilService } from './util.service.js'
 import { storageService } from './storage.service.js'
+import { func } from 'prop-types';
 
 
 export const noteService = {
-    query
+    query,
+    createNote,
+    removeNote,
+    changeNoteBgColor
 
 }
 
 const STORAGE_KEY = 'notesDB';
-let gNotes;
+
 
 
 
@@ -25,18 +29,61 @@ function query() {
 
 createNotes()
 
-function createNotes() {
-    gNotes = _loadNotesFromStorage();
-    if (!gNotes || !gNotes.length) {
 
-        gNotes = [
+function removeNote(noteId) {
+    console.log('noteId:', noteId);
+    let notes = _loadNotesFromStorage();
+    notes = notes.filter(note => note.id !== noteId);
+    _saveNotesToStorage(notes);
+    return Promise.resolve();
+
+}
+
+
+function changeNoteBgColor(color, noteId) {
+    const notes = _loadNotesFromStorage();
+    let noteIdx = notes.findIndex(note => note.id === noteId);
+    notes[noteIdx].style.backgroundColor = color;
+    _saveNotesToStorage(notes);
+    return Promise.resolve()
+}
+
+function createNote(txt, type) {
+    let notes = _loadNotesFromStorage()
+    let note = {
+        id: utilService.makeId(),
+        type,
+        isPinned: true,
+        info: {
+            txt: txt,
+        },
+        style: {
+            backgroundColor: "#fff475"
+        }
+
+    }
+    notes.unshift(note);
+    _saveNotesToStorage(notes);
+    return Promise.resolve()
+
+}
+
+function createNotes() {
+    let notes = _loadNotesFromStorage();
+    if (!notes || !notes.length) {
+
+        notes = [
             {
                 id: utilService.makeId(),
                 type: "note-txt",
                 isPinned: true,
                 info: {
                     txt: "Fullstack Me Baby!"
+                },
+                style: {
+                    backgroundColor: "#fff475"
                 }
+
             },
             {
                 id: utilService.makeId(),
@@ -46,8 +93,9 @@ function createNotes() {
                     title: "Bobi and Me"
                 },
                 style: {
-                    backgroundColor: "#00d"
+                    backgroundColor: "#fff475"
                 }
+
             },
             {
                 id: utilService.makeId(),
@@ -58,13 +106,17 @@ function createNotes() {
                         { txt: "Driving liscence", doneAt: null },
                         { txt: "Coding power", doneAt: 187111111 }
                     ]
+                },
+                style: {
+                    backgroundColor: "#fff475"
                 }
+
             }
         ];
 
     }
     console.log('test');
-    _saveNotesToStorage(gNotes)
+    _saveNotesToStorage(notes)
 }
 
 

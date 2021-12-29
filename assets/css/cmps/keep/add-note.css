@@ -1,0 +1,19 @@
+.add-note {
+    text-align: center;
+}
+
+.add-note input {
+    padding: 15px;
+    border: 2px solid gray;
+    margin-left: 10px;
+    border-radius: 12px;
+    width: 20%;
+}
+
+/* Icons */
+
+
+.add-note .far.fa-plus-square {
+    font-size: 29px;
+    cursor: pointer;
+}

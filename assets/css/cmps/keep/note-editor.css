@@ -1,0 +1,5 @@
+.note-editor {}
+
+.note-editor>* {
+    margin-left: 10px;
+}

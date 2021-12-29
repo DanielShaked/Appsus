@@ -1,14 +1,21 @@
 /* Basics */
-@import './parts/base.css';
+@import './setup/base.css';
 
 
 /* Helpers */
-@import './parts/helpers.css';
+@import './setup/helpers.css';
 
 
 /* Layout */
-@import './parts/layout.css';
+@import './setup/layout.css';
 
 
 /* Cmps */
 @import './cmps/header.css';
+
+/* Cmps-Keep */
+
+@import '../css/cmps/keep/note-preview.css';
+@import '../css/cmps/keep/color-picker.css';
+@import '../css/cmps/keep/add-note.css';
+@import '../css/cmps/keep/note-editor.css';
