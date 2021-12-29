@@ -1,0 +1,10 @@
+Day #1
+========
+ V Create demo emails data
+ Get mails from service 
+ Render mails list
+ Compose. Add mail to data.
+ Emails basic layout
+ Delete email
+ Render open email
+ Add filter (check who sent/receive => inbox/sent) READ/UNREAD
