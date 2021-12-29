@@ -87,7 +87,7 @@ function createNotes() {
                 id: utilService.makeId(),
                 type: "note-img",
                 info: {
-                    url: "http://some-img/me",
+                    url: "https://www.coding-academy.org/images/ca-logo-dark@2x.png",
                     title: "Bobi and Me"
                 },
                 style: {
