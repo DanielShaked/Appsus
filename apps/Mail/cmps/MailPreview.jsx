@@ -8,15 +8,18 @@ export class MailPreview extends React.Component {
   };
 
   onToggleStar = () => {
-    mailService.ToggleStar(this.props.mail.id).then(() => {
-      console.log('Toggle success in localStorage object');
+    mailService.toggleStar(this.props.mail.id).then(() => {
+      console.log('Toggle star...');
       // TODO: to check if need to reload all emails
-      this.props.loadMails();
+      //   this.props.loadMails();
     });
     this.setState({isStarred: !this.state.isStarred});
   };
 
-  toggleRead = () => {
+  onToggleRead = () => {
+    mailService.toggleRead(this.props.mail.id).then(() => {
+      console.log('Toggle read...');
+    });
     this.setState({isRead: !this.state.isRead});
   };
 
@@ -30,7 +33,7 @@ export class MailPreview extends React.Component {
     const {mail} = this.props;
     const {isRead, isStarred} = this.state;
     return (
-      <section className={`mail-preview ${isRead ? 'read' : 'unread'}`} onClick={this.toggleRead}>
+      <section className={`mail-preview ${isRead ? 'read' : 'unread'}`} onClick={this.onToggleRead}>
         <h3>{mail.from}</h3>
         <p className="mail-preview-subject">{mail.subject}</p>
         <MailLongText txt={mail.body} />

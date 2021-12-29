@@ -4,8 +4,9 @@ import {dummyDataService} from './mail.dummydata.service.js';
 
 export const mailService = {
   query,
-  ToggleStar,
+  toggleStar,
   deleteMailById,
+  toggleRead,
 };
 
 const STORAGE_KEY = 'emailDB';
@@ -17,6 +18,13 @@ function query(criteria = null) {
     const inboxEmails = emails.filter(email => email.status === 'inbox');
     return Promise.resolve(inboxEmails);
   }
+}
+
+function toggleRead(id) {
+  const mailIdx = gEmails.findIndex(mail => mail.id === id);
+  gEmails[mailIdx].isRead = !gEmails[mailIdx].isRead;
+  _saveEmailsToStorage(gEmails);
+  return Promise.resolve();
 }
 
 function deleteMailById(id) {
@@ -33,7 +41,7 @@ function deleteMailById(id) {
   return Promise.resolve();
 }
 
-function ToggleStar(id) {
+function toggleStar(id) {
   const mailIdx = gEmails.findIndex(mail => mail.id === id);
   gEmails[mailIdx].isStarred = !gEmails[mailIdx].isStarred;
   _saveEmailsToStorage(gEmails);
