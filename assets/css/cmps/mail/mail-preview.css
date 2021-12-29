@@ -50,3 +50,9 @@
 .mail-preview-delete:hover {
   opacity: 1;
 }
+
+.mail-preview-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}

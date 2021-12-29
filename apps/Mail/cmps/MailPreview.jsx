@@ -1,5 +1,6 @@
 import {MailLongText} from './MailLongText.jsx';
 import {mailService} from '../services/mail.service.js';
+import {utilService} from '../../../services/util.service.js';
 export class MailPreview extends React.Component {
   state = {
     mail: this.props.mail,
@@ -38,12 +39,15 @@ export class MailPreview extends React.Component {
         <p className="mail-preview-subject">{mail.subject}</p>
         <MailLongText txt={mail.body} />
         <div className="mail-preview-actions">
-          <div className="">
+          <div className="actions-btns">
             <i
               onClick={this.onToggleStar}
               className={`${isStarred ? 'active-star' : ''} mail-preview-star fas fa-star`}></i>
 
             <i onClick={this.onDeleteMail} className="mail-preview-delete fas fa-trash"></i>
+          </div>
+          <div className="actions-time">
+            <p>{utilService.getFormattedDate(mail.sentAt)}</p>
           </div>
         </div>
       </section>
