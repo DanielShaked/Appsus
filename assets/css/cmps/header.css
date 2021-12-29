@@ -1,0 +1,21 @@
+.header {
+  background-color: #a8dadc;
+}
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 10vh;
+  color: #e63946;
+  margin-bottom: 1.5rem;
+}
+.main-nav ul > *:not(:last-child) {
+  margin-inline-end: 1rem;
+}
+
+.main-nav ul li a {
+  color: #1d3557;
+}
+.main-nav ul li a.active {
+  color: #e63946;
+}
