@@ -1,3 +1,7 @@
+.mail-preview:hover {
+  cursor: pointer;
+}
+
 .mail-preview.unread {
   font-weight: bold;
 }
@@ -12,9 +16,17 @@
 
 .mail-preview-star:hover {
   color: #f2c16b;
-  cursor: pointer;
 }
 
 .mail-preview-star.active-star {
   color: #f2c16b;
+}
+
+.mail-preview-delete {
+  color: #e34d4d;
+  opacity: 0.7;
+}
+
+.mail-preview-delete:hover {
+  opacity: 1;
 }
