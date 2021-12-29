@@ -10,9 +10,7 @@ const STORAGE_KEY = 'emailDB';
 let gEmails = _getEmails();
 
 function query(criteria = null) {
-  console.log('query');
   let emails = storageService.loadFromStorage(STORAGE_KEY);
-  console.log('emails', emails);
   if (!criteria) {
     const inboxEmails = emails.filter(email => email.status === 'inbox');
     return Promise.resolve(inboxEmails);
