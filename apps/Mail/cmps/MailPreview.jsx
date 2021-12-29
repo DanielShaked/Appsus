@@ -16,6 +16,10 @@ export class MailPreview extends React.Component {
     this.setState({isStarred: !this.state.isStarred});
   };
 
+  toggleRead = () => {
+    this.setState({isRead: !this.state.isRead});
+  };
+
   onDeleteMail = () => {
     mailService.deleteMailById(this.props.mail.id).then(() => {
       this.props.loadMails();
@@ -26,7 +30,7 @@ export class MailPreview extends React.Component {
     const {mail} = this.props;
     const {isRead, isStarred} = this.state;
     return (
-      <section className="mail-preview">
+      <section className={`mail-preview ${isRead ? 'read' : 'unread'}`} onClick={this.toggleRead}>
         <h3>{mail.from}</h3>
         <p className="mail-preview-subject">{mail.subject}</p>
         <MailLongText txt={mail.body} />

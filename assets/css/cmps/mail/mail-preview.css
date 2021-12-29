@@ -1,3 +1,11 @@
+.mail-preview.unread {
+  font-weight: bold;
+}
+
+.mail-preview.read > * {
+  font-weight: normal;
+}
+
 .mail-preview-star {
   color: rgb(188, 188, 188);
 }
