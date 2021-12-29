@@ -1,14 +1,11 @@
 /* Basics */
 @import './setup/base.css';
 
-
 /* Helpers */
 @import './setup/helpers.css';
 
-
 /* Layout */
 @import './setup/layout.css';
-
 
 /* Cmps */
 @import './cmps/header.css';
@@ -19,3 +16,5 @@
 @import '../css/cmps/keep/color-picker.css';
 @import '../css/cmps/keep/add-note.css';
 @import '../css/cmps/keep/note-editor.css';
+@import '../css/cmps/mail/mail-preview.css';
+@import '../css/cmps/mail/mail-list.css';

@@ -1,0 +1,20 @@
+.mail-list-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.mail-list-header {
+  display: flex;
+  background-color: #292929;
+  height: 1.5rem;
+  color: #f0eeee;
+  align-items: center;
+  padding: 1rem;
+}
+.mail-list-header > *:not(:last-child) {
+  width: 15rem;
+}
+
+.mail-list-header > h3:last-child {
+  justify-self: end;
+}

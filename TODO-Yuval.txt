@@ -1,8 +1,8 @@
 Day #1
 ========
  V Create demo emails data
- Get mails from service 
- Render mails list
+ V Get mails from service 
+  Render mails list
  Compose. Add mail to data.
  Emails basic layout
  Delete email
