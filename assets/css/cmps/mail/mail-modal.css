@@ -1,0 +1,23 @@
+.mail-modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 3%;
+  left: 5%;
+  min-height: 50px;
+  background: rgb(43, 43, 43);
+  padding: 10px;
+  border-radius: 0.5em;
+  color: white;
+  gap: 20px;
+}
+.mail-modal button {
+  background: rgb(43, 43, 43);
+  color: white;
+  border: none;
+}
+.mail-modal button:hover {
+  background-color: rgba(255, 255, 255, 0.247);
+  cursor: pointer;
+}

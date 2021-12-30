@@ -7,6 +7,7 @@ export const mailService = {
   toggleStar,
   deleteMailById,
   toggleRead,
+  send,
 };
 
 const STORAGE_KEY = 'emailDB';
@@ -18,6 +19,20 @@ function query(criteria = null) {
     const inboxEmails = emails.filter(email => email.status === 'inbox');
     return Promise.resolve(inboxEmails);
   }
+}
+
+function send(email) {
+  email = {
+    id: utilService.makeId(),
+    isRead: true,
+    sentAt: Date.now(),
+    status: 'sent',
+    isStarred: false,
+    ...email,
+  };
+  gEmails.unshift(email);
+  _saveEmailsToStorage(gEmails);
+  return Promise.resolve();
 }
 
 function toggleRead(id) {

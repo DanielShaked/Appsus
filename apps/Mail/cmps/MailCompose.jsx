@@ -1,3 +1,5 @@
+import {mailService} from '../../mail/services/mail.service.js';
+
 export class MailCompose extends React.Component {
   state = {
     email: {
@@ -23,6 +25,16 @@ export class MailCompose extends React.Component {
     }));
   };
 
+  onSendEmail = ev => {
+    ev.preventDefault();
+    console.log('sending..');
+    console.log('this.state.email', this.state.email);
+    mailService.send(this.state.email).then(() => {
+      this.props.onClose();
+      this.props.toggleModal();
+    });
+  };
+
   render() {
     const {to, subject, body} = this.state;
     return (
@@ -31,14 +43,15 @@ export class MailCompose extends React.Component {
           <h4>New Message</h4>
           <button onClick={this.props.onClose}>X</button>
         </div>
-        <form className="compose-form">
+        <form className="compose-form" onSubmit={this.onSendEmail}>
           <input
-            type="text"
+            type="email"
             value={to}
             placeholder="To"
             ref={this.refInput}
             name="to"
             onChange={this.handleChange}
+            required
           />
           <input
             type="text"
