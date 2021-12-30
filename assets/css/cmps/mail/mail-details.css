@@ -24,8 +24,15 @@
   line-height: 1.5rem;
 }
 
-.mail-preview-delete {
+.mail-details-delete {
   position: absolute;
   bottom: -25px;
   right: 15px;
+  color: #e34d4d;
+  opacity: 0.4;
+}
+.mail-details-delete:hover {
+  color: #e34d4d;
+  opacity: 0.7;
+  cursor: pointer;
 }

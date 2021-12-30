@@ -49,10 +49,12 @@ export class MailApp extends React.Component {
     if (!mails) return <Loader />;
     return (
       <section className="mail-app">
-        <div className="mail-main main-layout">
+        <div className="mail-main">
           {/* TODO: send onSetFilter */}
           <aside className="nav-left">
-            <button onClick={this.onOpenCompose}>Compose New Email</button>
+            <button onClick={this.onOpenCompose}>
+              <i class="fas fa-plus"></i>Compose
+            </button>
             <MailSideNav />
           </aside>
           <MailFilter criteria={this.state.criteria} />
