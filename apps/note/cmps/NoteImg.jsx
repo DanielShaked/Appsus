@@ -1,14 +1,9 @@
 
 
-export function NoteImg({dataProps, note}) {
-    console.log('dataProps:', dataProps);
-    console.log('note:', note);
-    console.log('note:', note.info.url);
-    
-
+export function NoteImg({dataProps}) {
+    const { note } = dataProps;
     return (
         <section className="note-img">
-            note Img!!!
             <img src={note.info.url} alt="" />
 
         </section>

@@ -1,6 +1,5 @@
 
 export function NoteTodos({dataProps}) {
-    console.log('dataProps:', dataProps);
     
 
     return (

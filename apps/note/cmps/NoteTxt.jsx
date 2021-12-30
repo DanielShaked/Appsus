@@ -1,3 +1,5 @@
+import { NoteEditor } from "./NoteEditor";
+
 export class NoteTxt extends React.Component {
 
     
@@ -8,15 +10,24 @@ export class NoteTxt extends React.Component {
     
     
     render() {
-        console.log('this.props.dataProps:', this.props.dataProps);
+        const { removeNote, changeBgColor, note } = this.props.dataProps
+
         return (
-            <section className="note-txt">
-                    note txt!!!
-            </section>
-        )
+            <React.Fragment>
+                <div>
+                note txt!!!   
+                
+
+                   
+                </div>   
+                </React.Fragment>
+
+
+)
+                
+
+
     }
-
-
 
 
 
