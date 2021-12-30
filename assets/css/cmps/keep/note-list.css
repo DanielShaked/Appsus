@@ -2,3 +2,8 @@
     display: grid;
     grid-template-columns: repeat(5, 1fr);
 }
+
+.search-container {
+    margin-top: 35px;
+    text-align: center;
+}

@@ -7,12 +7,14 @@ export const noteService = {
     query,
     createNote,
     removeNote,
-    changeNoteBgColor
+    changeNoteBgColor,
+    updateNoteContent
 
 }
 
 const STORAGE_KEY = 'notesDB';
 
+createNotes()
 
 
 
@@ -22,15 +24,14 @@ function query() {
     // if (!filterBy) return Promise.resolve(cars)
     // const filteredCars = _getFilteredCars(cars, filterBy)
     return Promise.resolve(notes)
-
 }
 
 
-createNotes()
 
 
 function removeNote(noteId) {
     let notes = _loadNotesFromStorage();
+
     notes = notes.filter(note => note.id !== noteId);
     _saveNotesToStorage(notes);
     return Promise.resolve();
@@ -69,6 +70,20 @@ function createNote(value, type) {
 
 }
 
+
+
+function updateNoteContent(noteId, noteType, value) {
+    const notes = _loadNotesFromStorage()
+    const noteIdx = notes.findIndex(note => note.id === noteId);
+    switch (noteType) {
+        case 'note-txt':
+            notes[noteIdx].info.txt = value;
+    }
+    console.log('notes:', notes);
+
+    _saveNotesToStorage(notes);
+    return Promise.resolve(notes[noteIdx])
+}
 
 function getInfoKeyByType(type) {
     switch (type) {

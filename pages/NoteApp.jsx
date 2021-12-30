@@ -16,12 +16,19 @@ export class NoteApp extends React.Component {
         this.loadNotes()
     }
 
-    loadNotes() {
+    loadNotes = () => {
         noteService.query().then((notes) => {
             this.setState({notes})
         })
     }
 
+
+    updateNoteContent = (noteId, noteType, txt,) => {
+        noteService.updateNoteContent(noteId, noteType, txt)
+            .then(this.loadNotes())
+        
+    }
+    
     addNote = (value, type) => {
         noteService.createNote(value, type)
             .then(this.loadNotes())               
@@ -30,12 +37,11 @@ export class NoteApp extends React.Component {
     removeNote = (noteId) => {
         noteService.removeNote(noteId)
             .then(this.loadNotes())
-        
     }
 
 
     
-     changeBgColor = (color, noteId) => {
+    changeBgColor = (color, noteId) => {
          noteService.changeNoteBgColor(color, noteId)
             .then(this.loadNotes())
     
@@ -50,6 +56,7 @@ export class NoteApp extends React.Component {
                 <AddNote addNote={this.addNote} />
                 <SearchNote/>
                 <NoteList
+                    updateNoteContent={this.updateNoteContent}
                     removeNote={this.removeNote}
                     changeBgColor={this.changeBgColor}
                     notes={notes} />

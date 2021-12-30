@@ -7,11 +7,12 @@ import { NoteVideo } from "./NoteVideo.jsx";
 
 
 
-export function NotePreview({ note, removeNote, changeBgColor }) {
+export function NotePreview({ note, removeNote, changeBgColor, updateNoteContent }) {
 
     const dataProps = {
         removeNote,
         changeBgColor,
+        updateNoteContent,
         note
     }
 
