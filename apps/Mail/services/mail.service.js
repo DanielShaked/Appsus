@@ -16,10 +16,23 @@ let gEmails = _getEmails();
 
 function query(criteria = null) {
   let emails = storageService.loadFromStorage(STORAGE_KEY);
+
   if (!criteria) {
     const inboxEmails = emails.filter(email => email.status === 'inbox');
     return Promise.resolve(inboxEmails);
   }
+
+  let {txt} = criteria;
+  txt.toLowerCase();
+  const filteredByTxtEmails = gEmails.filter(mail => {
+    return (
+      mail.subject.toLowerCase().includes(txt) ||
+      mail.body.toLowerCase().includes(txt) ||
+      mail.from.toLowerCase().includes(txt)
+    );
+  });
+
+  return Promise.resolve(filteredByTxtEmails);
 }
 
 function getEmailById(id) {
