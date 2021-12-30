@@ -1,0 +1,26 @@
+.mail-main {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  grid-gap: 15px;
+  margin: 0 15px;
+}
+
+.mail-filter-search {
+  grid-column: 2 / 3;
+}
+
+.mail-list-container {
+  grid-column: 2 / 3;
+}
+
+.nav-left {
+  grid-row: 1/3;
+  gap: 50px;
+}
+
+.mail-sidenav ul {
+  flex-direction: column;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
