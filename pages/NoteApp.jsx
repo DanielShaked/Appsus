@@ -23,7 +23,7 @@ export class NoteApp extends React.Component {
     }
 
 
-    updateNoteContent = (noteId, noteType, txt,) => {
+    updateNoteContent = (noteId, noteType, txt) => {
         noteService.updateNoteContent(noteId, noteType, txt)
             .then(this.loadNotes())
         

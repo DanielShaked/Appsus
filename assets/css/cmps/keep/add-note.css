@@ -2,13 +2,36 @@
     text-align: center;
 }
 
-.add-note input {
+.add-note input {}
+
+.add-note form {
+    border: 1px solid black;
+    padding: 15px;
+    box-shadow: 0px 3px 16px 0px rgb(50 50 50 / 35%);
+    border-radius: 20px;
+    width: 30%;
+    text-align: center;
+    margin: 0 auto;
+
+}
+
+
+.add-note form input {
+    font-size: 1.5rem;
     padding: 15px;
     border: 2px solid gray;
     margin-left: 10px;
     border-radius: 12px;
-    width: 20%;
+    width: 50%;
+    border: none;
+    outline: none;
+
 }
+
+.add-note form input ::placeholder {
+    color: black;
+}
+
 
 /* Icons */
 
@@ -19,12 +42,16 @@
 }
 
 .add-note .button-type {
-    padding: 15px;
     font-size: 1.2rem;
     margin: 0 5px;
-    border-radius: 15px;
+    background: transparent;
     border: none;
+    outline: none;
 }
+
+
+
+
 
 .add-note .button-type:focus {
     background-color: darkslategrey;

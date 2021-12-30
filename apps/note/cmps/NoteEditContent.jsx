@@ -1,5 +1,4 @@
 
-
 export class NoteEditContent extends React.Component {
 
 

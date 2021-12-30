@@ -5,7 +5,7 @@
     max-width: 350px;
     min-height: 200px;
     border-radius: 25px;
-    padding: 15px;
+    padding: 30px;
     margin: 20px;
 
 }
@@ -16,17 +16,28 @@
 }
 
 
+.note-preview .note-img {
+    width: 100%;
+}
+
+.note-preview .note-img img {
+    object-fit: cover;
+}
+
+
 /* Icons */
 .note-preview .fas.fa-thumbtack {
+    padding: 15px;
     position: absolute;
     color: darkgrey;
-    opacity: 0.5;
+    opacity: 0;
     left: 5%;
     top: 5%;
     font-size: 25px;
     cursor: pointer;
     transition: opacity 0.218s ease-in
 }
+
 
 .note-preview .fas.fa-thumbtack:hover {
     opacity: 1;
