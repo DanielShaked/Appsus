@@ -15,18 +15,6 @@
     font-size: 1.5rem;
 }
 
-/* 
-.note-editor {
-    position: absolute;
-    bottom: 5%;
-    right: 5%;
-    
-}
-
-.note-editor>* {
-    cursor: pointer;
-} */
-
 
 /* Icons */
 .note-preview .fas.fa-thumbtack {

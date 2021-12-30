@@ -4,6 +4,7 @@ export class AddNote extends React.Component {
     state = {
         value: '',
         type: 'note-txt',
+        placeholder: 'Enter new note here...'
         
     }
     
@@ -18,7 +19,19 @@ export class AddNote extends React.Component {
     }
    
     onSetType = (type) => {        
-        this.setState({  type });            
+        this.setState({ type });
+        const placeholder = this.changePlaceholder(type)
+        this.setState({placeholder})
+    }
+
+    changePlaceholder(type) {
+        switch (type) {
+            case 'note-img':
+                return 'Enter image url...'
+            case 'note-video':
+                return 'Enter video url...'
+            }
+           
     }
 
     onAddNote = () => {
@@ -26,6 +39,7 @@ export class AddNote extends React.Component {
         if (!value || !type) return;
         this.props.addNote(value, type);
         this.resetInput();
+        // this.setState({placeholder:'Enter new note here...'})
     }
 
     onSubmit = (ev) => {
@@ -44,7 +58,7 @@ export class AddNote extends React.Component {
             <i onClick={() => this.onSetType('note-todos')}  className="far fa-list-alt"></i>]
         const buttons = buttonsIcons.map((icon, idx) => <button
             className="button-type" key={idx} >{icon}</button>)        
-        const { value } = this.state;
+        const { value,placeholder } = this.state;
         
         return (
             <section className="add-note">
@@ -54,7 +68,7 @@ export class AddNote extends React.Component {
                             type="text"
                             name="value"
                             value={value}
-                            placeholder="Enter new note here..."
+                            placeholder={placeholder}
                             onChange={this.handleChange}
                             onBlur={this.onAddNote}/>
                             {buttons}
