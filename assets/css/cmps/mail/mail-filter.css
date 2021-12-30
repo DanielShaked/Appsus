@@ -1,0 +1,8 @@
+.mail-filter-search input {
+  padding: 15px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  width: 40vw;
+}

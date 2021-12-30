@@ -5,7 +5,12 @@ export class MailFilter extends React.Component {
 
   handleChange = ({target}) => {
     const txt = target.value;
-    this.setState({txt});
+
+    this.setState({txt}, () => {
+      let newCriteria = this.props.criteria;
+      newCriteria.txt = this.state.txt;
+      this.props.onSetCriteria(newCriteria);
+    });
   };
 
   render() {

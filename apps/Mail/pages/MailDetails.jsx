@@ -49,7 +49,7 @@ export class MailDetails extends React.Component {
           </div>
           <div className="content-body">
             <p>{body}</p>
-            <i onClick={this.onDeleteMail} className="mail-preview-delete fas fa-trash"></i>
+            <i onClick={this.onDeleteMail} className="mail-details-delete fas fa-trash"></i>
           </div>
         </div>
       </section>

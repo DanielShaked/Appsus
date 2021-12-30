@@ -26,10 +26,14 @@ export class MailApp extends React.Component {
 
   loadMails = () => {
     const {criteria} = this.state;
-    // TODO: send criteria for filtering
-    mailService.query().then(mails => {
+
+    mailService.query(criteria).then(mails => {
       this.setState({mails});
     });
+  };
+
+  onSetCriteria = newCriteria => {
+    this.setState({criteria: newCriteria}, this.loadMails);
   };
 
   toggleModal = () => {
@@ -49,13 +53,19 @@ export class MailApp extends React.Component {
     if (!mails) return <Loader />;
     return (
       <section className="mail-app">
-        <div className="mail-main main-layout">
-          {/* TODO: send onSetFilter */}
+        <div className="mail-main">
           <aside className="nav-left">
-            <button onClick={this.onOpenCompose}>Compose New Email</button>
-            <MailSideNav />
+            <button onClick={this.onOpenCompose}>
+              <i className="fas fa-plus"></i>
+              Compose
+            </button>
+            <MailSideNav
+              criteria={this.state.criteria}
+              onSetCriteria={this.onSetCriteria}
+              loadMails={this.loadMails}
+            />
           </aside>
-          <MailFilter criteria={this.state.criteria} />
+          <MailFilter criteria={this.state.criteria} onSetCriteria={this.onSetCriteria} />
           <MailList mails={mails} loadMails={this.loadMails} toggleModal={this.toggleModal} />
           {this.state.isCompose && <MailCompose onClose={this.onClose} toggleModal={this.toggleModal} />}
           {this.state.isModal && <MailModal txt="Message sent successfully" toggleModal={this.toggleModal} />}

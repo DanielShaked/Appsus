@@ -10,6 +10,9 @@
 .mail-preview-content {
   display: flex;
   gap: 1.5rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .mail-preview:hover {
@@ -59,6 +62,17 @@
   cursor: pointer;
 }
 
+.mail-preview-subject {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.mail-preview-body {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .mail-list-time {
   flex-grow: 2;
   text-align: right;
@@ -70,4 +84,5 @@
   gap: 10px;
   justify-content: flex-end;
   flex-grow: 1;
+  white-space: nowrap;
 }

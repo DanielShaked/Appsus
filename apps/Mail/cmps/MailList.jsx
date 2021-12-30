@@ -2,9 +2,10 @@ import {MailPreview} from './MailPreview.jsx';
 
 // TODO: need to pass loadmails ? to load all emails?
 export function MailList({mails, loadMails}) {
+  // console.log(this.props);
   if (!mails || !mails.length) return <h1>There are no emails to show</h1>;
   return (
-    <div className="mail-list-container">
+    <div className="mail-list-container main-layout">
       <div className="mail-list-header">
         <h3 className="mail-list-from">From</h3>
         <h3 className="mail-list-subject">Subject</h3>

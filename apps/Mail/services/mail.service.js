@@ -16,9 +16,52 @@ let gEmails = _getEmails();
 
 function query(criteria = null) {
   let emails = storageService.loadFromStorage(STORAGE_KEY);
+
   if (!criteria) {
     const inboxEmails = emails.filter(email => email.status === 'inbox');
     return Promise.resolve(inboxEmails);
+  }
+
+  let {txt} = criteria;
+  txt.toLowerCase();
+  let filteredByTxtEmails = gEmails.filter(mail => {
+    return (
+      mail.subject.toLowerCase().includes(txt) ||
+      mail.body.toLowerCase().includes(txt) ||
+      mail.from.toLowerCase().includes(txt)
+    );
+  });
+
+  filteredByTxtEmails = filteredByTxtEmails ? filteredByTxtEmails : gEmails;
+
+  let mailsToShow;
+  switch (criteria.status) {
+    case 'inbox':
+      mailsToShow = filteredByTxtEmails.filter(mail => {
+        return mail.status === 'inbox';
+      });
+      return Promise.resolve(mailsToShow);
+    case 'starred':
+      mailsToShow = filteredByTxtEmails.filter(mail => {
+        return mail.isStarred;
+      });
+      return Promise.resolve(mailsToShow);
+    case 'sent':
+      mailsToShow = filteredByTxtEmails.filter(mail => {
+        return mail.status === 'sent';
+      });
+      return Promise.resolve(mailsToShow);
+    case 'trash':
+      mailsToShow = filteredByTxtEmails.filter(mail => {
+        return mail.status === 'trash';
+      });
+      return Promise.resolve(mailsToShow);
+    case 'draft':
+      mailsToShow = filteredByTxtEmails.filter(mail => {
+        return mail.status === 'draft';
+      });
+
+      return Promise.resolve(mailsToShow);
   }
 }
 
