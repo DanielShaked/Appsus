@@ -1,5 +1,6 @@
 import { AddNote } from "../apps/note/cmps/AddNote.jsx"
 import { NoteList } from "../apps/Note/cmps/NoteList.jsx"
+import { SearchNote } from "../apps/note/cmps/SearchNote.jsx"
 import { noteService } from "../apps/Note/services/note.service.js"
 
 
@@ -34,7 +35,7 @@ export class NoteApp extends React.Component {
 
 
     
-     onChangeBgColor = (color, noteId) => {
+     changeBgColor = (color, noteId) => {
          noteService.changeNoteBgColor(color, noteId)
             .then(this.loadNotes())
     
@@ -42,15 +43,15 @@ export class NoteApp extends React.Component {
 
     render() {
         const { notes } = this.state;
-        console.log('notes from NoteApp render:', notes);
         
         if (!notes) return <h1>no notes</h1>
         return (
             <section className="note-app">
-                <h1>Note app!</h1>
-                <AddNote addNote={this.addNote}/>
-                <NoteList removeNote={this.removeNote}
-                    onChangeBgColor={this.onChangeBgColor}
+                <AddNote addNote={this.addNote} />
+                <SearchNote/>
+                <NoteList
+                    removeNote={this.removeNote}
+                    changeBgColor={this.changeBgColor}
                     notes={notes} />
             </section>
         )

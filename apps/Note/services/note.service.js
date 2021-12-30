@@ -18,7 +18,6 @@ const STORAGE_KEY = 'notesDB';
 
 function query() {
     const notes = _loadNotesFromStorage()
-    console.log('notes from service:', notes);
 
     // if (!filterBy) return Promise.resolve(cars)
     // const filteredCars = _getFilteredCars(cars, filterBy)
@@ -31,7 +30,6 @@ createNotes()
 
 
 function removeNote(noteId) {
-    console.log('noteId:', noteId);
     let notes = _loadNotesFromStorage();
     notes = notes.filter(note => note.id !== noteId);
     _saveNotesToStorage(notes);
@@ -48,14 +46,17 @@ function changeNoteBgColor(color, noteId) {
     return Promise.resolve()
 }
 
-function createNote(txt, type) {
+function createNote(value, type) {
     let notes = _loadNotesFromStorage()
+    const infoKey = getInfoKeyByType(type);
+    console.log('infoKey:', infoKey);
+
     let note = {
         id: utilService.makeId(),
         type,
         isPinned: true,
         info: {
-            txt: txt,
+            [infoKey]: value
         },
         style: {
             backgroundColor: "#fff475"
@@ -66,6 +67,20 @@ function createNote(txt, type) {
     _saveNotesToStorage(notes);
     return Promise.resolve()
 
+}
+
+
+function getInfoKeyByType(type) {
+    switch (type) {
+        case 'note-img':
+            return 'url'
+        case 'note-txt':
+            return 'txt'
+        case 'note-todos':
+            return 'todos'
+        case 'note-video':
+            return 'url'
+    }
 }
 
 function createNotes() {
@@ -89,7 +104,7 @@ function createNotes() {
                 id: utilService.makeId(),
                 type: "note-img",
                 info: {
-                    url: "http://some-img/me",
+                    url: "https://www.coding-academy.org/images/ca-logo-dark@2x.png",
                     title: "Bobi and Me"
                 },
                 style: {
@@ -115,7 +130,6 @@ function createNotes() {
         ];
 
     }
-    console.log('test');
     _saveNotesToStorage(notes)
 }
 

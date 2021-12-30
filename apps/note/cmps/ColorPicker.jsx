@@ -1,9 +1,9 @@
-export function ColorPicker({ onToggleColorPicker,onChangeBgColor, id }) {
+export function ColorPicker({ onToggleColorPicker,changeBgColor, id }) {
     const colors = ['#fbbc04', '##ccff90', '#a7ffeb', '#d7aefb', '#e6c9a8', '#f28b82']
     
 
     function onSelectedColor(color) {
-        onChangeBgColor(color, id);
+        changeBgColor(color, id);
         onToggleColorPicker(false)
     }
     return (

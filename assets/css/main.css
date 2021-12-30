@@ -10,8 +10,11 @@
 /* Cmps */
 @import './cmps/header.css';
 
-/* Cmps-Keep */
+@import '../css/cmps/mail/mail-preview.css';
+@import '../css/cmps/mail/mail-list.css';
 
+/* Cmps-Keep */
+@import '../css/cmps/keep/note-list.css';
 @import '../css/cmps/keep/note-preview.css';
 @import '../css/cmps/keep/color-picker.css';
 @import '../css/cmps/keep/add-note.css';
@@ -21,3 +24,4 @@
 @import '../css/cmps/mail/mail-compose.css';
 @import '../css/cmps/mail/mail-modal.css';
 @import '../css/cmps/mail/mail-details.css';
+@import '../css/cmps/keep/note-editor.css';
