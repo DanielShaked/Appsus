@@ -10,13 +10,16 @@ export class AddNote extends React.Component {
     componentDidMount() {
       
     }
-    
+
     handleChange = ({ target }) => {
         const field = target.name;
         const value = target.value;
         this.setState((prevState) => ({ ...prevState, [field]: value }));            
     }
    
+    onSetType = (type) => {        
+        this.setState({  type });            
+    }
 
     onAddNote = () => {
         const { value, type } = this.state;
@@ -31,15 +34,16 @@ export class AddNote extends React.Component {
     }
     
     resetInput = () => {
-        this.setState({value: '', type:'note-text'})
+        this.setState({value: ''})
     }
     
    
     render() {
-        const buttonsIcons = [<i className="fab fa-youtube"></i>, <i className="far fa-images"></i>, <i className="far fa-list-alt"></i>]
+        const buttonsIcons = [<i onClick={() => this.onSetType('note-video')} className="fab fa-youtube"></i>,
+            <i onClick={() => this.onSetType('note-img')} className="far fa-images"></i>,
+            <i onClick={() => this.onSetType('note-todos')}  className="far fa-list-alt"></i>]
         const buttons = buttonsIcons.map((icon, idx) => <button
-            className="button-type" key={idx} >{icon}</button>)
-        
+            className="button-type" key={idx} >{icon}</button>)        
         const { value } = this.state;
         
         return (

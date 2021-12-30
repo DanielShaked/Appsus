@@ -7,23 +7,24 @@ import { NoteVideo } from "./NoteVideo.jsx";
 
 
 
-export function NotePreview({ note, removeNote, onChangeBgColor }) {
+export function NotePreview({ note, removeNote, changeBgColor }) {
 
     const dataProps = {
         removeNote,
-        onChangeBgColor,
+        changeBgColor,
+        note
     }
 
     function getCmpByType(type) {
         switch (type) {
             case 'note-txt':
-                return <NoteTxt dataProps={{ ...dataProps }} note={note} />
+                return <NoteTxt dataProps={{ ...dataProps }}  />
             case 'note-todos':
-                return <NoteTodos dataProps={{ ...dataProps }} note={note}/>
+                return <NoteTodos dataProps={{ ...dataProps }}/>
             case 'note-img':
-                return <NoteImg dataProps={{ ...dataProps }} note={note} />
+                return <NoteImg dataProps={{ ...dataProps }}  />
             case 'note-video':
-                return <NoteVideo dataProps={{...dataProps}} note={note}/>
+                return <NoteVideo dataProps={{...dataProps}} />
         }
     }
 
@@ -35,17 +36,13 @@ export function NotePreview({ note, removeNote, onChangeBgColor }) {
     const { backgroundColor } = note.style;
     return (
         <section style={{ backgroundColor }} className="note-preview">
-            {getCmpByType(note.type)}
-            {/* <div></div>
             <i className="fas fa-thumbtack"></i>
-            <div className="note-content">
-            {note.info.txt}
-            </div>
-            
+            {getCmpByType(note.type)}
             <NoteEditor
-                onRemoveNote={onRemoveNote}
-                onChangeBgColor={onChangeBgColor}
-                note={note} /> */}
+                removeNote={removeNote}
+                changeBgColor={changeBgColor}
+                note={note} /> 
         </section>
     )
 }
+

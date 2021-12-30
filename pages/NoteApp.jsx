@@ -35,7 +35,7 @@ export class NoteApp extends React.Component {
 
 
     
-     onChangeBgColor = (color, noteId) => {
+     changeBgColor = (color, noteId) => {
          noteService.changeNoteBgColor(color, noteId)
             .then(this.loadNotes())
     
@@ -49,8 +49,9 @@ export class NoteApp extends React.Component {
             <section className="note-app">
                 <AddNote addNote={this.addNote} />
                 <SearchNote/>
-                <NoteList removeNote={this.removeNote}
-                    onChangeBgColor={this.onChangeBgColor}
+                <NoteList
+                    removeNote={this.removeNote}
+                    changeBgColor={this.changeBgColor}
                     notes={notes} />
             </section>
         )

@@ -46,14 +46,17 @@ function changeNoteBgColor(color, noteId) {
     return Promise.resolve()
 }
 
-function createNote(txt, type) {
+function createNote(value, type) {
     let notes = _loadNotesFromStorage()
+    const infoKey = getInfoKeyByType(type);
+    console.log('infoKey:', infoKey);
+
     let note = {
         id: utilService.makeId(),
         type,
         isPinned: true,
         info: {
-            txt: txt,
+            [infoKey]: value
         },
         style: {
             backgroundColor: "#fff475"
@@ -64,6 +67,20 @@ function createNote(txt, type) {
     _saveNotesToStorage(notes);
     return Promise.resolve()
 
+}
+
+
+function getInfoKeyByType(type) {
+    switch (type) {
+        case 'note-img':
+            return 'url'
+        case 'note-txt':
+            return 'txt'
+        case 'note-todos':
+            return 'todos'
+        case 'note-video':
+            return 'url'
+    }
 }
 
 function createNotes() {

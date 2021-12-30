@@ -1,8 +1,9 @@
 .note-preview {
+    text-align: center;
     background-color: #fff475;
     position: relative;
     max-width: 350px;
-    height: 200px;
+    min-height: 200px;
     border-radius: 25px;
     padding: 15px;
     margin: 20px;

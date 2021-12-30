@@ -6,29 +6,29 @@ export class NoteEditor extends React.Component {
         isColorPickerOpen: false,
     }
 
-
-     onRemoveNote = ()  => {
-        removeNote(this.props.note.id);
+    
+    onRemoveNote = () => {
+        this.props.removeNote(this.props.note.id);
         // TODO: busService user-msg
     }
-
-
+    
+    
     onToggleColorPicker = (isOpen) => {
         this.setState({isColorPickerOpen: isOpen})
     }
-
+    
     render() {
-        const { note, onRemoveNote, onChangeBgColor} = this.props;
+        const { note, removeNote, changeBgColor} = this.props;
         const { isColorPickerOpen } = this.state;
         return(
             <section className="note-editor">
                 <i onClick={() => this.onToggleColorPicker(true)} className="fas fa-palette"></i>
                 {(isColorPickerOpen)
                     && <ColorPicker
-                        onChangeBgColor={onChangeBgColor}
+                        changeBgColor={changeBgColor}
                         onToggleColorPicker={this.onToggleColorPicker}
                         id={note.id} />}
-                <i onClick={onRemoveNote} className="far fa-trash-alt"></i>
+                <i onClick={this.onRemoveNote} className="far fa-trash-alt"></i>
             </section>
         )
     }
