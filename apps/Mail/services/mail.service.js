@@ -24,7 +24,7 @@ function query(criteria = null) {
 
   let {txt} = criteria;
   txt.toLowerCase();
-  const filteredByTxtEmails = gEmails.filter(mail => {
+  let filteredByTxtEmails = gEmails.filter(mail => {
     return (
       mail.subject.toLowerCase().includes(txt) ||
       mail.body.toLowerCase().includes(txt) ||
@@ -32,7 +32,37 @@ function query(criteria = null) {
     );
   });
 
-  return Promise.resolve(filteredByTxtEmails);
+  filteredByTxtEmails = filteredByTxtEmails ? filteredByTxtEmails : gEmails;
+
+  let mailsToShow;
+  switch (criteria.status) {
+    case 'inbox':
+      mailsToShow = filteredByTxtEmails.filter(mail => {
+        return mail.status === 'inbox';
+      });
+      return Promise.resolve(mailsToShow);
+    case 'starred':
+      mailsToShow = filteredByTxtEmails.filter(mail => {
+        return mail.isStarred;
+      });
+      return Promise.resolve(mailsToShow);
+    case 'sent':
+      mailsToShow = filteredByTxtEmails.filter(mail => {
+        return mail.status === 'sent';
+      });
+      return Promise.resolve(mailsToShow);
+    case 'trash':
+      mailsToShow = filteredByTxtEmails.filter(mail => {
+        return mail.status === 'trash';
+      });
+      return Promise.resolve(mailsToShow);
+    case 'draft':
+      mailsToShow = filteredByTxtEmails.filter(mail => {
+        return mail.status === 'draft';
+      });
+
+      return Promise.resolve(mailsToShow);
+  }
 }
 
 function getEmailById(id) {

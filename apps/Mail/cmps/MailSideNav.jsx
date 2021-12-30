@@ -8,28 +8,54 @@ export class MailSideNav extends React.Component {
     },
   };
 
+  setCriteriaStatus = status => {
+    this.setState({criteria: {...this.state.criteria, status}}, () => {
+      this.props.onSetCriteria(this.state.criteria);
+    });
+  };
+
   render() {
     const {status} = this.state.criteria;
     return (
       <section className="mail-sidenav">
         <ul className="clean-list flex">
-          <li className={`${status === 'inbox' ? 'active-side' : ''} side-nav side-nav-inbox`}>
+          <li
+            onClick={() => {
+              this.setCriteriaStatus('inbox');
+            }}
+            className={`${status === 'inbox' ? 'active-side' : ''} side-nav side-nav-inbox`}>
             <i className="side-nav-icon fas fa-inbox"></i>
             Inbox
           </li>
-          <li className={`${status === 'starred' ? 'active-side' : ''} side-nav`}>
+          <li
+            onClick={() => {
+              this.setCriteriaStatus('starred');
+            }}
+            className={`${status === 'starred' ? 'active-side' : ''} side-nav`}>
             <i className="side-nav-icon fas fa-star"></i>
             Starred
           </li>
-          <li className={`${status === 'sent' ? 'active-side' : ''} side-nav`}>
+          <li
+            onClick={() => {
+              this.setCriteriaStatus('sent');
+            }}
+            className={`${status === 'sent' ? 'active-side' : ''} side-nav`}>
             <i className="side-nav-icon fas fa-paper-plane"></i>
             Sent
           </li>
-          <li className={`${status === 'draft' ? 'active-side' : ''} side-nav`}>
+          <li
+            onClick={() => {
+              this.setCriteriaStatus('draft');
+            }}
+            className={`${status === 'draft' ? 'active-side' : ''} side-nav`}>
             <i className="side-nav-icon fas fa-file"></i>
             Drafts
           </li>
-          <li className={`${status === 'trash' ? 'active-side' : ''} side-nav`}>
+          <li
+            onClick={() => {
+              this.setCriteriaStatus('trash');
+            }}
+            className={`${status === 'trash' ? 'active-side' : ''} side-nav`}>
             <i className="side-nav-icon fas fa-trash"></i>
             Trash
           </li>

@@ -26,7 +26,7 @@ export class MailApp extends React.Component {
 
   loadMails = () => {
     const {criteria} = this.state;
-    // TODO: send criteria for filtering
+
     mailService.query(criteria).then(mails => {
       this.setState({mails});
     });
@@ -54,13 +54,16 @@ export class MailApp extends React.Component {
     return (
       <section className="mail-app">
         <div className="mail-main">
-          {/* TODO: send onSetFilter */}
           <aside className="nav-left">
             <button onClick={this.onOpenCompose}>
               <i className="fas fa-plus"></i>
               Compose
             </button>
-            <MailSideNav />
+            <MailSideNav
+              criteria={this.state.criteria}
+              onSetCriteria={this.onSetCriteria}
+              loadMails={this.loadMails}
+            />
           </aside>
           <MailFilter criteria={this.state.criteria} onSetCriteria={this.onSetCriteria} />
           <MailList mails={mails} loadMails={this.loadMails} toggleModal={this.toggleModal} />
