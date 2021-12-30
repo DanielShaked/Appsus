@@ -56,7 +56,7 @@ function createNote(value, type) {
         type,
         isPinned: true,
         info: {
-            [infoKey]: value
+            [infoKey]: (infoKey === 'urlId') ? utilService.getYoutubeId(value) : value,
         },
         style: {
             backgroundColor: "#fff475"
@@ -79,7 +79,7 @@ function getInfoKeyByType(type) {
         case 'note-todos':
             return 'todos'
         case 'note-video':
-            return 'url'
+            return 'urlId'
     }
 }
 
