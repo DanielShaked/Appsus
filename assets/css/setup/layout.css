@@ -15,50 +15,50 @@
   }
 }
 
-@media (min-width: 600px) {
+@media (min-width: 735px) {
   .main-layout {
-    width: 530px;
+    width: 350px;
   }
 }
 
-@media (min-width: 700px) {
+@media (min-width: 825px) {
   .main-layout {
-    width: 620px;
+    width: 400px;
   }
 }
 
-@media (min-width: 780px) {
+@media (min-width: 905px) {
   .main-layout {
-    width: 700px;
+    width: 600px;
   }
 }
 
-@media (min-width: 920px) {
+@media (min-width: 1020px) {
   .main-layout {
-    width: 880px;
+    width: 750px;
   }
 }
 
-@media (min-width: 1050px) {
+@media (min-width: 1180px) {
   .main-layout {
-    width: 980px;
+    width: 950px;
   }
 }
 
-@media (min-width: 1250px) {
+@media (min-width: 1325px) {
   .main-layout {
-    width: 1080px;
+    width: 1000px;
   }
 }
 
-@media (min-width: 1460px) {
+@media (min-width: 1485px) {
   .main-layout {
     width: 1100px;
   }
 }
 
-@media (min-width: 1700px) {
+@media (min-width: 1590px) {
   .main-layout {
-    width: 1440px;
+    width: 1200px;
   }
 }
