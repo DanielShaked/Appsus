@@ -1,0 +1,31 @@
+.mail-details-content {
+  width: 980px;
+  margin: 2rem 0;
+  border: 1px solid #292929;
+  background-color: rgb(230, 230, 230);
+  box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px;
+  flex-grow: 1;
+}
+
+.content-header {
+  background-color: #292929;
+  color: #f0eeee;
+  padding: 0.5rem;
+  line-height: 1.8;
+}
+
+.content-body {
+  position: relative;
+  margin-top: 0.5rem;
+  margin-left: 0.5rem;
+  padding: 0.2rem;
+  letter-spacing: 1.2px;
+  margin-bottom: 2rem;
+  line-height: 1.5rem;
+}
+
+.mail-preview-delete {
+  position: absolute;
+  bottom: -25px;
+  right: 15px;
+}

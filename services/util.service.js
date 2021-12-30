@@ -3,6 +3,7 @@ export const utilService = {
   makeLorem,
   getRandomIntInclusive,
   getFormattedDate,
+  getRandomColor,
 };
 
 function makeId(length = 6) {

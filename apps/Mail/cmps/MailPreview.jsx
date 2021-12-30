@@ -1,6 +1,9 @@
 import {MailLongText} from './MailLongText.jsx';
 import {mailService} from '../services/mail.service.js';
 import {utilService} from '../../../services/util.service.js';
+
+const {Link} = ReactRouterDOM;
+
 export class MailPreview extends React.Component {
   state = {
     mail: this.props.mail,
@@ -34,23 +37,29 @@ export class MailPreview extends React.Component {
     const {mail} = this.props;
     const {isRead, isStarred} = this.state;
     return (
-      <section className={`mail-preview ${isRead ? 'read' : 'unread'}`} onClick={this.onToggleRead}>
-        <h3>{mail.from}</h3>
-        <p className="mail-preview-subject">{mail.subject}</p>
-        <MailLongText txt={mail.body} />
-        <div className="mail-preview-actions">
-          <div className="actions-btns">
-            <i
-              onClick={this.onToggleStar}
-              className={`${isStarred ? 'active-star' : ''} mail-preview-star fas fa-star`}></i>
+      <Link to={`/mail/${mail.id}`}>
+        <section
+          className={`mail-preview ${isRead ? 'read' : 'unread'}`}
+          onClick={console.log('clicked section..')}>
+          <div className={`mail-preview-content ${isRead ? 'read' : 'unread'}`} onClick={this.onToggleRead}>
+            <h3>{mail.from}</h3>
+            <p className="mail-preview-subject">{mail.subject}</p>
+            <MailLongText txt={mail.body} />
+          </div>
+          <div className="mail-preview-actions">
+            <div className="actions-btns">
+              <i
+                onClick={this.onToggleStar}
+                className={`${isStarred ? 'active-star' : ''} mail-preview-star fas fa-star`}></i>
 
-            <i onClick={this.onDeleteMail} className="mail-preview-delete fas fa-trash"></i>
+              <i onClick={this.onDeleteMail} className="mail-preview-delete fas fa-trash"></i>
+            </div>
+            <div className="actions-time">
+              <p>{utilService.getFormattedDate(mail.sentAt)}</p>
+            </div>
           </div>
-          <div className="actions-time">
-            <p>{utilService.getFormattedDate(mail.sentAt)}</p>
-          </div>
-        </div>
-      </section>
+        </section>
+      </Link>
     );
   }
 }

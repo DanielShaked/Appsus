@@ -8,6 +8,7 @@ export const mailService = {
   deleteMailById,
   toggleRead,
   send,
+  getEmailById,
 };
 
 const STORAGE_KEY = 'emailDB';
@@ -19,6 +20,11 @@ function query(criteria = null) {
     const inboxEmails = emails.filter(email => email.status === 'inbox');
     return Promise.resolve(inboxEmails);
   }
+}
+
+function getEmailById(id) {
+  const mail = gEmails.find(mail => mail.id === id);
+  return Promise.resolve(mail);
 }
 
 function send(email) {
