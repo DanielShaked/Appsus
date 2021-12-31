@@ -54,19 +54,26 @@ export class MailApp extends React.Component {
     return (
       <section className="mail-app">
         <div className="mail-main">
-          <aside className="nav-left">
-            <button onClick={this.onOpenCompose}>
+          {/* <aside className="mail-side-nav"> */}
+          {/* <button onClick={this.onOpenCompose}>
               <i className="fas fa-plus"></i>
               Compose
-            </button>
-            <MailSideNav
-              criteria={this.state.criteria}
-              onSetCriteria={this.onSetCriteria}
-              loadMails={this.loadMails}
-            />
-          </aside>
-          <MailFilter criteria={this.state.criteria} onSetCriteria={this.onSetCriteria} />
-          <MailList mails={mails} loadMails={this.loadMails} toggleModal={this.toggleModal} />
+            </button> */}
+          <MailSideNav
+            onOpenCompose={this.onOpenCompose}
+            criteria={this.state.criteria}
+            onSetCriteria={this.onSetCriteria}
+            loadMails={this.loadMails}
+          />
+          {/* </aside> */}
+          {/* <MailFilter criteria={this.state.criteria} onSetCriteria={this.onSetCriteria} /> */}
+          <MailList
+            mails={mails}
+            loadMails={this.loadMails}
+            toggleModal={this.toggleModal}
+            criteria={this.state.criteria}
+            onSetCriteria={this.onSetCriteria}
+          />
           {this.state.isCompose && <MailCompose onClose={this.onClose} toggleModal={this.toggleModal} />}
           {this.state.isModal && <MailModal txt="Message sent successfully" toggleModal={this.toggleModal} />}
         </div>

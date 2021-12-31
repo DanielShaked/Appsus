@@ -2,6 +2,8 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+  width: 10rem;
+  flex-grow: 1;
 }
 
 .mail-list-header {

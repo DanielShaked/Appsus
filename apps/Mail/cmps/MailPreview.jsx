@@ -11,7 +11,8 @@ export class MailPreview extends React.Component {
     isStarred: this.props.mail.isStarred,
   };
 
-  onToggleStar = () => {
+  onToggleStar = ev => {
+    ev.preventDefault();
     mailService.toggleStar(this.props.mail.id).then(() => {
       console.log('Toggle star...');
       // TODO: to check if need to reload all emails
@@ -20,14 +21,15 @@ export class MailPreview extends React.Component {
     this.setState({isStarred: !this.state.isStarred});
   };
 
-  onToggleRead = () => {
+  onToggleRead = ev => {
+    ev.preventDefault();
     mailService.toggleRead(this.props.mail.id).then(() => {
-      console.log('Toggle read...');
+      this.setState({isRead: !this.state.isRead});
     });
-    this.setState({isRead: !this.state.isRead});
   };
 
-  onDeleteMail = () => {
+  onDeleteMail = ev => {
+    ev.preventDefault();
     mailService.deleteMailById(this.props.mail.id).then(() => {
       this.props.loadMails();
     });
@@ -36,26 +38,35 @@ export class MailPreview extends React.Component {
   render() {
     const {mail} = this.props;
     const {isRead, isStarred} = this.state;
+    const isReadIcon = isRead ? (
+      <i onClick={this.onToggleRead} className="far fa-envelope-open"></i>
+    ) : (
+      <i onClick={this.onToggleRead} className="far fa-envelope"></i>
+    );
     return (
       <Link to={`/mail/${mail.id}`}>
-        <section
-          className={`mail-preview ${isRead ? 'read' : 'unread'}`}
-          onClick={console.log('clicked section..')}>
-          <div className={`mail-preview-content ${isRead ? 'read' : 'unread'}`} onClick={this.onToggleRead}>
-            <h3>{mail.from}</h3>
+        <section className={`mail-preview ${isRead ? 'read' : 'unread'}`}>
+          <h3 className="mail-preview-from">{mail.from}</h3>
+
+          <div className="mail-preview-subject-container">
             <p className="mail-preview-subject">{mail.subject}</p>
+          </div>
+
+          <div className="mail-preview-body-container">
             <MailLongText txt={mail.body} />
           </div>
+
           <div className="mail-preview-actions">
-            <div className="actions-btns">
+            <div className="actions-btns flex">
+              {isReadIcon}
+
               <i
                 onClick={this.onToggleStar}
                 className={`${isStarred ? 'active-star' : ''} mail-preview-star fas fa-star`}></i>
 
               <i onClick={this.onDeleteMail} className="mail-preview-delete fas fa-trash"></i>
-            </div>
-            <div className="actions-time">
-              <p>{utilService.getFormattedDate(mail.sentAt)}</p>
+
+              <p className="actions-time">{utilService.getFormattedDate(mail.sentAt)}</p>
             </div>
           </div>
         </section>
