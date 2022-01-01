@@ -1,8 +1,11 @@
+import { func } from "prop-types";
+
 export const utilService = {
     makeId,
     makeLorem,
     getRandomIntInclusive,
-    getYoutubeId
+    getYoutubeId,
+    getRandomColor,
 }
 
 function getYoutubeId(url) {
@@ -12,6 +15,13 @@ function getYoutubeId(url) {
     return (match && match[2].length === 11)
         ? match[2]
         : null;
+}
+
+
+function getRandomColor() {
+    const colors = ['#fbbc04', '#ccff90', '#a7ffeb', '#d7aefb', '#e6c9a8', '#f28b82']
+    const randomIdx = getRandomIntInclusive(0, colors.length - 1);
+    return colors[randomIdx];
 }
 
 function makeId(length = 6) {
@@ -67,14 +77,6 @@ function padNum(num) {
     return (num > 9) ? num + '' : '0' + num
 }
 
-function getRandomColor() {
-    const letters = '0123456789ABCDEF'
-    var color = '#'
-    for (let i = 0; i < 6; i++) {
-        color += letters[Math.floor(Math.random() * 16)]
-    }
-    return color
-}
 
 function getDayName(date, locale) {
     date = new Date(date)

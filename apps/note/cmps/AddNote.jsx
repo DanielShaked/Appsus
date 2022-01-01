@@ -1,10 +1,11 @@
-
+// import { AddTodo } from "./AddTodo.jsx";
 export class AddNote extends React.Component {
 
     state = {
         value: '',
         type: 'note-txt',
-        placeholder: 'Enter new note here...'
+        placeholder: 'Enter new note here...',
+        // isAddToDo: false,
         
     }
     
@@ -24,15 +25,23 @@ export class AddNote extends React.Component {
         this.setState({placeholder})
     }
 
-    changePlaceholder(type) {
+    changePlaceholder = (type) => {
         switch (type) {
             case 'note-img':
                 return 'Enter image url...'
             case 'note-video':
                 return 'Enter video url...'
+            case 'note-txt':
+                return 'Enter new note here...'
+            case 'note-todos':
+                return 'Enter Todo title here...'
             }
            
     }
+
+    // onToggleTodoAdd = (isAddToDo) => {
+    //     this.setState({ isAddToDo });
+    // }
 
     onAddNote = () => {
         const { value, type } = this.state;
@@ -53,28 +62,34 @@ export class AddNote extends React.Component {
     
    
     render() {
-        const buttonsIcons = [<i onClick={() => this.onSetType('note-video')} className="fab fa-youtube"></i>,
-            <i onClick={() => this.onSetType('note-img')} className="far fa-images"></i>,
-            <i onClick={() => this.onSetType('note-todos')}  className="far fa-list-alt"></i>]
+        const  { value, placeholder, isAddToDo,type } = this.state;
+        const buttonsIcons = [
+        <i onClick={() => this.onSetType('note-txt')} className={`far fa-sticky-note ${(type === 'note-txt') ? 'active' : ''}`}></i>,
+        <i onClick={() => this.onSetType('note-video')} className={`fab fa-youtube ${(type==='note-video') ? 'active' : ''} `}></i>,
+        <i onClick={() => this.onSetType('note-img')} className={`far fa-images ${(type === 'note-img' ) ? 'active' : ''}`}></i>,
+        <i onClick={() => this.onSetType('note-todos')} className={`far fa-list-alt ${(type === 'note-todos') ? 'active' : ''}`}></i>]
         const buttons = buttonsIcons.map((icon, idx) => <button
-            className="button-type" key={idx} >{icon}</button>)        
-        const { value,placeholder } = this.state;
+            className="button-type" key={idx} >{icon}</button>)
         
         return (
             <section className="add-note">
-                <div className="add-input">
-                    <form onSubmit={this.onSubmit}>
-                        <input
-                            type="text"
-                            name="value"
-                            value={value}
-                            placeholder={placeholder}
-                            onChange={this.handleChange}
-                            onBlur={this.onAddNote}/>
+                {/* {(!isAddToDo) && */}
+                    <div className="add-input">
+                        <form onSubmit={this.onSubmit}>
+                            <input
+                                type="text"
+                                name="value"
+                                value={value}
+                                placeholder={placeholder}
+                                onChange={this.handleChange}
+                                onBlur={this.onAddNote} />
                             {buttons}
-                        </form>                    
-                </div>
+                        </form>
+                    </div>
+                
+                {/* {(isAddToDo) && <AddTodo/>} */}
             </section>
+            
         )
     }
 

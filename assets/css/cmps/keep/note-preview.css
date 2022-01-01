@@ -1,15 +1,3 @@
-.note-preview {
-    text-align: center;
-    background-color: #fff475;
-    position: relative;
-    max-width: 350px;
-    min-height: 200px;
-    border-radius: 25px;
-    padding: 30px;
-    margin: 20px;
-
-}
-
 .note-preview .note-content {
     text-align: center;
     font-size: 1.5rem;

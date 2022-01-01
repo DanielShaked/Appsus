@@ -8,7 +8,12 @@ export const noteService = {
     createNote,
     removeNote,
     changeNoteBgColor,
-    updateNoteContent
+    updateNoteContent,
+    togglePinnedNote,
+    toggleDone,
+    addTodo,
+    removeTodo,
+    updateTodoContent
 
 }
 
@@ -16,17 +21,73 @@ const STORAGE_KEY = 'notesDB';
 
 createNotes()
 
+function toggleDone(todoId, noteId) {
+    let notes = _loadNotesFromStorage();
+    let noteIdx = notes.findIndex(note => note.id === noteId);
+    let todoIdx = notes[noteIdx].info.todos.findIndex(todo => todo.id === todoId);
+    let isDoneStatus = notes[noteIdx].info.todos[todoIdx].isDone
+    notes[noteIdx].info.todos[todoIdx].isDone = !isDoneStatus;
+    _saveNotesToStorage(notes)
+    return Promise.resolve();
+
+}
+
+function query(filterChar) {
+
+    let notes = _loadNotesFromStorage();
+    if (filterChar) {
+        notes = notes.filter(note => {
+            switch (note.type) {
+                case 'note-txt':
+                    return note.info.txt.split(' ')[0].toLowerCase().includes(filterChar)
+                case 'note-todos':
+                    return [...notes, note.info.title.split(' ')[0].toLowerCase().includes(filterChar)]
+            }
+        })
+    }
 
 
-function query() {
-    const notes = _loadNotesFromStorage()
-
+    const pinnedNotes = notes.filter(note => note.isPinned);
+    const unPinnedNotes = notes.filter(note => !note.isPinned);
     // if (!filterBy) return Promise.resolve(cars)
     // const filteredCars = _getFilteredCars(cars, filterBy)
-    return Promise.resolve(notes)
+    return Promise.resolve({ pinnedNotes, unPinnedNotes })
+}
+
+function updateTodoContent(todoId, noteId, value) {
+    let notes = _loadNotesFromStorage();
+    let noteIdx = notes.findIndex(note => note.id === noteId);
+    const todoIdx = notes[noteIdx].info.todos.findIndex(todo => todo.id === todoId);
+    notes[noteIdx].info.todos[todoIdx].txt = value;
+    _saveNotesToStorage(notes);
+    return Promise.resolve();
+}
+
+function removeTodo(todoId, noteId) {
+    let notes = _loadNotesFromStorage();
+    let noteIdx = notes.findIndex(note => note.id === noteId);
+
+    notes[noteIdx].info.todos = notes[noteIdx].info.todos.filter(todo => todo.id !== todoId);
+    _saveNotesToStorage(notes);
+    return Promise.resolve();
 }
 
 
+function addTodo(value, noteId) {
+    let notes = _loadNotesFromStorage();
+    let noteIdx = notes.findIndex(note => note.id === noteId);
+    notes[noteIdx].info.todos.unshift(_createTodo(value));
+    _saveNotesToStorage(notes);
+    return Promise.resolve();
+}
+
+function _createTodo(txt) {
+    return {
+        id: utilService.makeId(),
+        txt,
+        isDone: false,
+    }
+}
 
 
 function removeNote(noteId) {
@@ -39,6 +100,14 @@ function removeNote(noteId) {
 }
 
 
+function togglePinnedNote(noteId, isPinned) {
+    const notes = _loadNotesFromStorage();
+    const noteIdx = notes.findIndex(note => note.id === noteId);
+    notes[noteIdx].isPinned = isPinned;
+    _saveNotesToStorage(notes);
+    return Promise.resolve();
+}
+
 function changeNoteBgColor(color, noteId) {
     const notes = _loadNotesFromStorage();
     let noteIdx = notes.findIndex(note => note.id === noteId);
@@ -50,7 +119,7 @@ function changeNoteBgColor(color, noteId) {
 function createNote(value, type) {
     let notes = _loadNotesFromStorage()
     const infoKey = getInfoKeyByType(type);
-    console.log('infoKey:', infoKey);
+
 
     let note = {
         id: utilService.makeId(),
@@ -60,10 +129,11 @@ function createNote(value, type) {
             [infoKey]: (infoKey === 'urlId') ? utilService.getYoutubeId(value) : value,
         },
         style: {
-            backgroundColor: "#fff475"
+            backgroundColor: utilService.getRandomColor(),
         }
 
     }
+    if (type === 'note-todos') note.info.todos = [];
     notes.unshift(note);
     _saveNotesToStorage(notes);
     return Promise.resolve()
@@ -79,7 +149,6 @@ function updateNoteContent(noteId, noteType, value) {
         case 'note-txt':
             notes[noteIdx].info.txt = value;
     }
-    console.log('notes:', notes);
 
     _saveNotesToStorage(notes);
     return Promise.resolve(notes[noteIdx])
@@ -92,7 +161,7 @@ function getInfoKeyByType(type) {
         case 'note-txt':
             return 'txt'
         case 'note-todos':
-            return 'todos'
+            return 'title'
         case 'note-video':
             return 'urlId'
     }
@@ -106,42 +175,56 @@ function createNotes() {
             {
                 id: utilService.makeId(),
                 type: "note-txt",
-                isPinned: true,
+                isPinned: false,
                 info: {
                     txt: "Fullstack Me Baby!"
                 },
                 style: {
-                    backgroundColor: "#fff475"
+                    backgroundColor: "#fbbc04"
                 }
 
             },
             {
                 id: utilService.makeId(),
                 type: "note-img",
+                isPinned: false,
                 info: {
                     url: "https://www.coding-academy.org/images/ca-logo-dark@2x.png",
                     title: "Bobi and Me"
                 },
                 style: {
-                    backgroundColor: "#fff475"
+                    backgroundColor: "#d7aefb"
                 }
 
             },
             {
                 id: utilService.makeId(),
                 type: "note-todos",
+                isPinned: true,
                 info: {
-                    label: "Get my stuff together",
+                    title: "Get my stuff together",
                     todos: [
-                        { txt: "Driving liscence", doneAt: null },
-                        { txt: "Coding power", doneAt: 187111111 }
+                        { id: utilService.makeId(), txt: "Driving liscence", isDone: true },
+                        { id: utilService.makeId(), txt: "Coding power", isDone: false }
                     ]
                 },
                 style: {
-                    backgroundColor: "#fff475"
+                    backgroundColor: "#ccff90"
                 }
 
-            }
+            },
+            {
+                id: utilService.makeId(),
+                type: "note-txt",
+                isPinned: true,
+                info: {
+                    txt: "Go Sleep!"
+                },
+                style: {
+                    backgroundColor: "#a7ffeb"
+                }
+
+            },
         ];
 
     }

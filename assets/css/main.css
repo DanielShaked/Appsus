@@ -1,4 +1,5 @@
 /* Basics */
+@import './setup/fonts.css';
 @import './setup/base.css';
 
 /* Helpers */
@@ -29,5 +30,6 @@
 @import '../css/cmps/keep/color-picker.css';
 @import '../css/cmps/keep/add-note.css';
 @import '../css/cmps/keep/note-editor.css';
-@import '../css/cmps/keep/note-editor.css';
-@import '../css/cmps/keep/note-edit-content.css';
+@import '../css/cmps/keep/general.css';
+@import '../css/pages/keep.css';
+@import '../css/cmps/keep/note-todos.css';

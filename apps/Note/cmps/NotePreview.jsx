@@ -7,12 +7,16 @@ import { NoteVideo } from "./NoteVideo.jsx";
 
 
 
-export function NotePreview({ note, removeNote, changeBgColor, updateNoteContent }) {
+export function NotePreview({ note,updateTodoContent, addTodo,removeTodo,  removeNote, changeBgColor,toggleDoneTodo, updateNoteContent, onTogglePinedNote }) {
 
     const dataProps = {
         removeNote,
         changeBgColor,
         updateNoteContent,
+        toggleDoneTodo,
+        addTodo,
+        removeTodo,
+        updateTodoContent,
         note
     }
 
@@ -29,6 +33,10 @@ export function NotePreview({ note, removeNote, changeBgColor, updateNoteContent
         }
     }
 
+    function onTogglePin() {
+        const notePinStatus = note.isPinned;
+        onTogglePinedNote(note.id,!notePinStatus);
+    }
 
     function onRemoveNote() {
         removeNote(note.id);
@@ -37,7 +45,7 @@ export function NotePreview({ note, removeNote, changeBgColor, updateNoteContent
     const { backgroundColor } = note.style;
     return (
         <section style={{ backgroundColor }} className="note-preview">
-            <i className="fas fa-thumbtack"></i>
+            <i onClick={onTogglePin}  className="fas fa-thumbtack"></i>
             {getCmpByType(note.type)}
             <NoteEditor
                 removeNote={removeNote}
