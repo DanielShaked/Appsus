@@ -2,7 +2,8 @@
   display: flex;
   /* transform: translate(0); */
   position: static;
-  width: 18.375rem;
+
+  width: 15.375rem;
   background-color: #d75959;
   flex-direction: column;
   gap: 2rem;
@@ -12,25 +13,36 @@
   left: 0;
   top: 0;
   bottom: 0;
+
+  transition: 0.3s;
 }
 
 .mail-sidenav-compose {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 12rem;
-  height: 4rem;
+  /* width: 12rem;
+  height: 4rem; */
+  width: 60px;
+  height: 60px;
   margin-top: 2rem;
-  border-radius: 1.5rem;
+  border-radius: 30px;
   background-color: #292929;
   color: #f0eeee;
   font-size: 1.5rem;
   cursor: pointer;
+  margin-left: 5px;
+  position: relative;
+
+  transition: 0.4s;
+}
+.mail-sidenav-compose:hover {
+  width: 13rem;
 }
 
 .mail-sidenav ul {
   flex-direction: column;
-  gap: 50px;
+  gap: 35px;
   margin-top: 30px;
   height: 100vh;
 }
