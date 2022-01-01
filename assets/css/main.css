@@ -23,6 +23,7 @@
 @import '../css/cmps/mail/mail-preview.css';
 @import '../css/cmps/mail/mail-list.css';
 @import '../css/cmps/mail/mail-filter.css';
+@import '../css/cmps/mail/mail-sidenav.css';
 
 /* Cmps-Keep */
 @import '../css/cmps/keep/note-list.css';

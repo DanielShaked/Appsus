@@ -7,10 +7,9 @@
   justify-content: space-between;
   align-items: center;
   color: #e63946;
-  margin-bottom: 1.5rem;
 }
 
-.main-nav ul>*:not(:last-child) {
+.main-nav ul > *:not(:last-child) {
   margin-inline-end: 1rem;
 }
 

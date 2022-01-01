@@ -1,3 +1,17 @@
+.mail-details-actions {
+  margin: 20px 0 10px 0;
+}
+
+.action-back-container {
+  margin: 0 10px 0 0;
+  gap: 5px;
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+
+.action-back-content {
+}
+
 .mail-details-content {
   width: 100%;
   margin: 2rem 0;
@@ -22,6 +36,7 @@
   letter-spacing: 1.2px;
   margin-bottom: 2rem;
   line-height: 1.5rem;
+  min-height: 50vh;
 }
 
 .mail-details-delete {

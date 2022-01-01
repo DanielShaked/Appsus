@@ -1,4 +1,18 @@
 .mail-main {
+  display: flex;
+  flex-grow: 1;
+  /* width: 10rem; */
+}
+
+.mail-filter-search {
+  margin: 30px 0;
+}
+
+.mail-list-container {
+  margin: 0 30px;
+}
+
+/* .mail-main {
   display: grid;
   grid-template-columns: 150px 1fr;
   grid-gap: 15px;
@@ -49,4 +63,4 @@
 .side-nav.active-side {
   background-color: #292929;
   color: #fff;
-}
+} */

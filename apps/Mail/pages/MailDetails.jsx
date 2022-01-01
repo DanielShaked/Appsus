@@ -12,6 +12,7 @@ export class MailDetails extends React.Component {
     mailService.getEmailById(id).then(mail => {
       if (!mail) this.props.history.push('/mail');
       this.setState({mail});
+      if (!mail.isRead) mailService.toggleRead(mail.id);
     });
   }
 
@@ -33,10 +34,10 @@ export class MailDetails extends React.Component {
         <div className="mail-details-actions flex">
           <div className="action-back-container flex" onClick={this.onBack}>
             <i className="action-back-arrow fas fa-arrow-left"></i>
-            <p>Go Back</p>
+            <p className="action-back-content">Go Back</p>
           </div>
-          <i className="action-next fas fa-arrow-right"></i>
-          <p>Next</p>
+          {/* <i className="action-next fas fa-arrow-right"></i>
+          <p>Next</p> */}
         </div>
         <div className="mail-details-content">
           <div className="content-header">

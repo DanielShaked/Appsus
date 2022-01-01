@@ -25,7 +25,7 @@ const DUMMY_EMAILS = [
 
         Quick zephyrs blow, vexing daft Jim. Sex-charged fop blew my junk TV quiz. How quickly daft jumping zebras vex. Two driven jocks help fax my big quiz. Quick, Baz, get`,
     isRead: false,
-    sentAt: 1638774934886,
+    sentAt: 1637774407228,
     to: 'yuval@Appsus.com',
     from: 'gameQuizz@walla.com',
     status: 'inbox',
@@ -58,7 +58,7 @@ const DUMMY_EMAILS = [
         2. במידה ובחרת באפשרות איסוף הכרטיסים בקולנוע, ניתן להדפיסם בעמדות שירות העצמי בקולנוע באמצעות מספר ההזמנה שלך.
         3. במידה ורכשת כרטיס בהנחה (אזרח ותיק/ סטודנט/ חייל/ שוטר וכו') יש לאסוף את הכרטיסים בקופות הקולנוע, בהצגת תעודת הזכאות.`,
     isRead: false,
-    sentAt: 1638774934886,
+    sentAt: 1637774407228,
     to: 'yuval@Appsus.com',
     from: 'noreply@yesplanet.co.il',
     status: 'inbox',
@@ -71,7 +71,7 @@ const DUMMY_EMAILS = [
         could see his brown belly, slightly domed and divided by arches into 
         stiff sections.`,
     isRead: false,
-    sentAt: 1638774934886,
+    sentAt: 1637774407228,
     to: 'yuval@Appsus.com',
     from: 'pango.donotreply@pango-service.com',
     status: 'inbox',
@@ -79,7 +79,7 @@ const DUMMY_EMAILS = [
   },
   {
     id: utilService.makeId(),
-    subject: 'Tesla Trials Dogecoin Payments for Merch',
+    subject: 'Tesla Trials Dogecoin',
     body: `Elon Musk recently tweeted the company would accept Dogecoin as payment for merchandise. 
         DOGE briefly traded 27% higher after the announcement.`,
     isRead: true,
@@ -95,7 +95,7 @@ const DUMMY_EMAILS = [
     body: `	To see jobs and company updates relevant to your job.
         New Glassdoor Reviews`,
     isRead: true,
-    sentAt: 1638774934886,
+    sentAt: 1637774407228,
     to: 'yuval@Appsus.com',
     from: 'Glassdoor@glassdoor-service.com',
     status: 'inbox',
