@@ -21,10 +21,10 @@ export function App() {
         <Header />
         <main>
           <Switch>
-            <Route component={MailDetails} path="/mail/:mailId" />
-            <Route component={NoteApp} path="/note" />
-            <Route component={MailApp} path="/mail" />
-            <Route component={BookApp} path="/book" />
+            <Route component={MailDetails} path="mail/:mailId" />
+            <Route component={NoteApp} path="note" />
+            <Route component={MailApp} path="mail" />
+            <Route component={BookApp} path="book" />
             <Route component={Home} path="/" />
           </Switch>
         </main>

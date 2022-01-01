@@ -44,7 +44,7 @@ export class MailPreview extends React.Component {
       <i onClick={this.onToggleRead} className="far fa-envelope"></i>
     );
     return (
-      <Link to={`/mail/${mail.id}`}>
+      <Link to={`mail/${mail.id}`}>
         <section className={`mail-preview ${isRead ? 'read' : 'unread'}`}>
           <h3 className="mail-preview-from">{mail.from}</h3>
 

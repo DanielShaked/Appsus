@@ -16,6 +16,7 @@
 /* Icons */
 .note-preview .fas.fa-thumbtack {
     padding: 15px;
+    transition: 0.7s ease-out;
     position: absolute;
     color: darkgrey;
     opacity: 0;
@@ -27,7 +28,7 @@
 }
 
 
-.note-preview .fas.fa-thumbtack:hover {
+/* .note-preview .fas.fa-thumbtack:hover {
     opacity: 1;
     transform: scale(1.3);
-}
+} */
