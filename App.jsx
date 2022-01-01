@@ -1,12 +1,12 @@
 // imports Pages //
 import {Home} from 'pages/Home.jsx';
 import {MailApp} from 'pages/MailApp.jsx';
-import {BookApp} from 'pages/BookApp.jsx';
+// import {BookApp} from 'pages/BookApp.jsx';
 import {NoteApp} from 'pages/NoteApp.jsx';
 import {MailDetails} from 'apps/mail/pages/MailDetails.jsx';
 
 // imports cmps //
-import {Header} from './cmps/Header.jsx';
+import {Header} from 'cmps/Header.jsx';
 
 // import services//
 
@@ -24,7 +24,7 @@ export function App() {
             <Route component={MailDetails} path="/mail/:mailId" />
             <Route component={NoteApp} path="/note" />
             <Route component={MailApp} path="/mail" />
-            <Route component={BookApp} path="/book" />
+            {/* <Route component={BookApp} path="/book" /> */}
             <Route component={Home} path="/" />
           </Switch>
         </main>
