@@ -1,9 +1,41 @@
 .note-list {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    margin: 20px;
+    columns: 4;
+    column-gap: 10px;
+    align-items: center;
+
 }
 
-.search-container {
+iframe {
+    max-width: 220px;
+    max-height: 160px;
+}
+
+.note-list .search-container {
     margin-top: 35px;
     text-align: center;
+}
+
+.note-list .note-preview {
+    font-family: "notes-font";
+    line-height: 1.7rem;
+    text-align: center;
+    line-break: anywhere;
+    width: 240px;
+    min-height: 200px;
+    margin: 20px 15px 12px 15px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin: auto;
+    margin-bottom: 12px;
+    break-inside: avoid;
+    padding: 12px;
+    border-radius: 20px;
+}
+
+.note-preview img {
+    width: 100%;
+    object-fit: cover;
 }

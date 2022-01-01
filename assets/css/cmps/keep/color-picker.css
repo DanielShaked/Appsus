@@ -1,6 +1,7 @@
 .color-picker {
     display: flex;
     align-items: center;
+
 }
 
 .color-picker>*:not(:last-child) {
@@ -15,8 +16,4 @@
     border-radius: 50%;
     border: 1px solid darkslategray;
     transition: 0.25s ease-in-out;
-}
-
-.color-picker .color-value:hover {
-    transform: scale(1.1);
 }

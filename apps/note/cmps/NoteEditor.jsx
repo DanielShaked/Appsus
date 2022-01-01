@@ -20,6 +20,8 @@ export class NoteEditor extends React.Component {
     render() {
         const { note, removeNote, changeBgColor} = this.props;
         const { isColorPickerOpen } = this.state;
+        console.log('isColorPickerOpen:', isColorPickerOpen);
+        
         return(
             <section className="note-editor">
                 <i onClick={() => this.onToggleColorPicker(true)} className="fas fa-palette"></i>

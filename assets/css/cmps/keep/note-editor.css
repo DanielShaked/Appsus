@@ -1,17 +1,6 @@
 .note-editor {
     opacity: 0;
-    transition: 0.25s ease-in;
     transition: 0.7s ease-out;
-}
-
-.note-editor>* {
-    /* opacity: 0; */
-    margin-left: 1.5rem;
-    font-size: 1.3rem;
-}
-
-
-.note-editor {
     padding-top: 10px;
     position: absolute;
     bottom: 5%;
@@ -19,9 +8,14 @@
 
 }
 
+
 .note-editor>* {
+    margin-left: 1.5rem;
+    font-size: 1.3rem;
     cursor: pointer;
 }
+
+
 
 .note-editor:hover {
     opacity: 1;
@@ -30,4 +24,11 @@
     margin-left: 1.5rem;
     font-size: 1.3rem;
 
+}
+
+
+.note-editor .color-picker {
+    position: absolute;
+    right: 5%;
+    bottom: 100%;
 }
