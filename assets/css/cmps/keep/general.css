@@ -1,0 +1,9 @@
+.note-list .note-preview div.txt-content {
+    background-color: tomato;
+}
+
+.txt-content:focus {
+    border: none;
+    outline: none;
+
+}
